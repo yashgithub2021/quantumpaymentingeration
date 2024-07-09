@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PaymentRoutingModule } from './payment-routing.module';
 import { HdfcComponent } from './hdfc/hdfc.component';
 import { RazorpayComponent } from './razorpay/razorpay.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     PaymentRoutingModule,
     ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class PaymentModule { }

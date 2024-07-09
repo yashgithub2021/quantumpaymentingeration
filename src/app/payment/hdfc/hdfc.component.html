@@ -4,17 +4,18 @@
             <div class="mt-5">
                 <div class="">
                     <h3 class="text-center">Make a Payment Online</h3>
-                    <form class="p-5"[formGroup]="form" (ngSubmit)="onSubmit()">
+                    <form class="p-5" method="POST" action="http://localhost:5001/ccavRequestHandler">
                         <div class="row register-form">
                             <h4>Billing Information</h4>
                             <div class="col-md-12">
+                                <input type="hidden" name="merchant_id" id="merchant_id" value="216935">
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Name*" formControlName="name"
-                                         required />
+                                        required />
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email*" formControlName="email"
-                                        required />
+                                    <input type="email" class="form-control" placeholder="Email*"
+                                        formControlName="email" required />
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Mobile*" formControlName="tel"
@@ -23,7 +24,7 @@
 
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Address*"
-                                    formControlName="address" required />
+                                        formControlName="address" required />
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="City*" formControlName="city"
@@ -34,18 +35,18 @@
                                         required />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Zip*" formControlName="zip_code"
-                                        required />
+                                    <input type="text" class="form-control" placeholder="Zip*"
+                                        formControlName="zip_code" required />
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Country*"
-                                    formControlName="country" required />
+                                        formControlName="country" required />
                                 </div>
                             </div>
                             <h4>Payment Information</h4>
                             <div class="col-md-12 text-center">
                                 <div class="form-group">
-                                    <select required class="form-control" formControlName="currency_type" >
+                                    <select required class="form-control" formControlName="currency_type">
                                         <option disabled selected value="">Choose Currency Type</option>
                                         <option value="INR">INR - Indian Rupee</option>
                                         <option value="AUD">AUD - Australian Dollar</option>
@@ -57,12 +58,12 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <input type="number" class="form-control" placeholder="Amount*" formControlName="amount"
-                                        id="amount" value="" required />
+                                    <input type="number" class="form-control" placeholder="Amount*"
+                                        formControlName="amount" id="amount" value="" required />
                                 </div>
                                 <div class="form-group">
-                                    <input type="number" class="form-control" placeholder="Amount(in INR)"[value]="amountInINR"
-                                     required disabled />
+                                    <input type="number" class="form-control" placeholder="Amount(in INR)"
+                                        [value]="amountInINR" required disabled />
                                 </div>
                                 <button class="payment-btn mt-3" type="submit">Make Paymet</button>
                             </div>
@@ -77,3 +78,9 @@
         </div>
     </div>
 </div>
+
+<form #form1 ngNoForm id="nonseamless" method="post" name="redirect"
+    action="https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction">
+    <input type="hidden" id="encRequest" name="encRequest" [ngModel]="encRequest">
+    <input type="hidden" name="access_code" id="access_code" [ngModel]="accessCode">
+</form>
