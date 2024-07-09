@@ -52,8 +52,11 @@ export class RazorpayComponent implements OnInit {
         // We should prevent closing of the form when esc key is pressed.
         escape: false,
       },
-      handler: function (response: any) {
+      handler:  (response: any)=> {
         alert(`Payment successful. Payment ID: ${response.razorpay_payment_id}`);
+        this.paymentService.paymentSuccess(response).subscribe((data:any)=>{
+          console.log(data);
+        })
       },
 
       prefill: {
