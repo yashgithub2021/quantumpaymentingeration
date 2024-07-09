@@ -17,4 +17,7 @@ export class PaymentService {
   currencyAmountConvert(currency_type:string){
     return this.http.get(`https://v6.exchangerate-api.com/v6/4eaf4228928ecadb16ae0df7/latest/${currency_type}`);
   }
+  paymentSuccess(response:any){
+    return this.http.post(`${this.baseUrl}api/transactions/payment-success`,response)
+  }
 }
